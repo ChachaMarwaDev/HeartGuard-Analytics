@@ -1,0 +1,39 @@
+# Dataset Column Reference
+
+## Demographic
+- **Age**: Patient's age in years (Numeric)
+- **Sex**: Gender (1 = Male, 0 = Female) (Nominal)
+
+## Clinical Symptoms & Measurements
+- **cp**: Chest pain type (Nominal)
+  - 0 = Typical angina
+  - 1 = Atypical angina
+  - 2 = Non-anginal pain
+  - 3 = Asymptomatic
+- **trestbps**: Resting blood pressure (mm/HG) (Numeric)
+- **chol**: Serum cholesterol (mg/dl) (Numeric)
+- **fbs**: Fasting blood sugar > 120 mg/dl (1 = True, 0 = False) (Nominal)
+
+## Cardiac Test Results
+- **restecg**: Resting electrocardiogram (Nominal)
+  - 0 = Normal
+  - 1 = ST-T wave abnormality (inversions/elevation or depression > 0.05 mV)
+  - 2 = Probable/definite left ventricular hypertrophy
+- **thalach**: Maximum heart rate achieved (Numeric)
+- **exang**: Exercise-induced angina (1 = Yes, 0 = No) (Nominal)
+- **oldpeak**: ST-depression induced by exercise relative to rest (Numeric)
+- **slope**: ST segment slope during peak exercise (Nominal)
+  - 0 = Upsloping
+  - 1 = Flat
+  - 2 = Downsloping
+
+## Blood Disorders
+- **ca**: Number of major vessels (0–3) (Nominal)
+- **thal**: Thalassemia blood disorder classification (Nominal)
+  - 0 = NULL
+  - 1 = Normal blood flow
+  - 2 = Fixed defect (no blood flow in some heart areas)
+  - 3 = Reversible defect (abnormal blood flow)
+
+## Target Variable
+- **target**: Heart disease prediction (1 = Disease present, 0 = Normal) (Nominal)
