@@ -24,4 +24,6 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df['exang'] = df['exang'].map({1 :'Yes', 0:'No'})
     print(df.head(6))
     
+    # Section 2: analysis
+    # We will map out question and find an anlysis of what the data we have is for 
     return df

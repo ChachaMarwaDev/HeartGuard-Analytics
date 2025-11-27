@@ -37,3 +37,58 @@
 
 ## Target Variable
 - **target**: Heart disease prediction (1 = Disease present, 0 = Normal) (Nominal)
+
+# Analysis Questions for Heart Disease Dataset
+
+## 1. Descriptive Statistics
+- What is the distribution of age across the dataset? Are certain age groups more represented?
+- What is the male-to-female ratio, and does heart disease prevalence differ by sex?
+- What are the mean, median, and standard deviation for continuous variables (trestbps, chol, thalach, oldpeak)?
+
+## 2. Target Variable Analysis
+- What percentage of patients have heart disease (target = 1) vs. normal (target = 0)?
+- Is the dataset balanced or imbalanced?
+
+## 3. Demographic Relationships
+- How does heart disease prevalence vary by age group (e.g., <40, 40-50, 50-60, >60)?
+- Is there a significant difference in heart disease rates between males and females?
+- What is the age distribution for each sex, and how does it relate to heart disease?
+
+## 4. Clinical Symptoms Analysis
+- Which chest pain type (cp) is most associated with heart disease?
+- Do asymptomatic patients (cp = 3) still show heart disease presence?
+- What is the relationship between resting blood pressure (trestbps) and heart disease?
+- How does cholesterol level (chol) correlate with heart disease presence?
+- Does elevated fasting blood sugar (fbs = 1) increase heart disease risk?
+
+## 5. Cardiac Test Results
+- Which resting ECG pattern (restecg) is most predictive of heart disease?
+- Is there a correlation between maximum heart rate (thalach) and heart disease? Do patients with disease have lower max heart rates?
+- How does exercise-induced angina (exang) relate to heart disease diagnosis?
+- What is the relationship between ST-depression (oldpeak) values and disease presence?
+- Which ST segment slope (slope) pattern is most associated with heart disease?
+
+## 6. Blood Disorder Analysis
+- How does the number of major vessels (ca) correlate with heart disease severity?
+- Which thalassemia classification (thal) shows the highest heart disease prevalence?
+- Are there patients with NULL thalassemia values (thal = 0), and how should they be handled?
+
+## 7. Multivariate Analysis
+- What combinations of symptoms/tests are most predictive of heart disease?
+- Are there interaction effects between age, sex, and chest pain type?
+- How do multiple risk factors (high cholesterol + high blood pressure + diabetes) compound disease risk?
+
+## 8. Feature Importance
+- Which variables show the strongest correlation with the target variable?
+- Are there redundant features that provide similar information?
+- Which features could be most useful for predictive modeling?
+
+## 9. Outlier & Data Quality
+- Are there outliers in numeric variables (trestbps, chol, thalach, oldpeak)?
+- Are there missing values or NULL entries that need handling?
+- Do any values fall outside medically plausible ranges?
+
+## 10. Comparative Analysis
+- How do patients with vs. without exercise-induced angina differ across other variables?
+- What are the characteristic profiles of patients with different chest pain types?
+- How do cardiac test results differ between disease-positive and disease-negative groups?
