@@ -20,7 +20,6 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df['sex'] = df['sex'].map({1 :'Male', 0:'Female'})
     df['fbs'] = df['fbs'].map({1 :'True', 0:'False'})
     df['slope'] = df['slope'].map({2: 'Downsloping', 1 :'Flat', 0:'Upsloping'})
-    df['target'] = df['target'].map({1 :'Disease_present', 0:'Normal'})
     df['exang'] = df['exang'].map({1 :'Yes', 0:'No'})
     # print(df.head(6))
     # print(df.dtypes)
@@ -28,7 +27,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # Section 2: analysis
     # 1. Descriptive Statistics
     # Age distribution
-    age_distribution = df['age'].describe()
+    # age_distribution = df['age'].describe()
 
     # Create ordered age groups using pd.cut to handle unexpected ages robustly
     # bins = [28, 39, 49, 59, 69, 200]  # 29-39, 40-49, 50-59, 60-69, 70+
@@ -49,64 +48,86 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # print('Sex ratio: ', sex_ratio)
 
     # # Heart disease prevalence by sex
-    # disease_by_sex = df.groupby('sex')['target'].mean()
+    # disease_by_sex = df.groupby('sex')['target'].mean() # working with object type so on was to be type int64
+    # print('Disease by sex: ', disease_by_sex)
 
     # # Continuous variables statistics
     # continuous_vars = ['trestbps', 'chol', 'thalach', 'oldpeak']
     # continuous_stats = df[continuous_vars].describe()
+    # print(continuous_stats)
 
     # 2. Target Variable Analysis
     # Percentage with heart disease
     # target_distribution = df['target'].value_counts(normalize=True) * 100
+    # print(target_distribution)
     # target_counts = df['target'].value_counts()
+    # print(target_counts)
 
     # # Check if dataset is balanced
     # is_balanced = abs(target_distribution[0] - target_distribution[1]) < 10  # Within 10% difference
+    # print(is_balanced)
 
     # 3. Demographic Relationships
     # Heart disease prevalence by age group
-    # df['age_group'] = pd.cut(df['age'], bins=[20, 40, 50, 60, 80], labels=['<40', '40-50', '50-60', '>60'])
-    # disease_by_age = df.groupby('age_group')['target'].mean()
+    # bins = [28, 39, 49, 59, 69, 200]  # 29-39, 40-49, 50-59, 60-69, 70+
+    # labels = ['29-39', '40-49', '50-59', '60-69', '70+']
+    # df['AgeGroup'] = pd.cut(df['age'], bins=bins, labels=labels, right=True, include_lowest=True, ordered=True)
+    # disease_by_age = df.groupby('AgeGroup')['target'].mean() * 100
+    # print(disease_by_age)
 
     # Heart disease rates by sex
     # disease_by_sex = df.groupby('sex')['target'].mean()
+    # print(disease_by_sex)
 
     # Age distribution by sex and disease status
     # age_sex_disease = df.groupby(['sex', 'target'])['age'].describe()
+    # print(age_sex_disease)
 
     # 4. Clinical Symptoms Analysis
     # Chest pain type association with heart disease
     # cp_disease = df.groupby('cp')['target'].mean().sort_values(ascending=False)
+    # print(cp_disease)
 
     # # Asymptomatic patients with heart disease
     # asymptomatic_disease = df[df['cp'] == 3]['target'].mean()
+    # print(asymptomatic_disease)
 
     # # Resting blood pressure and heart disease
-    # bp_disease = df.groupby(pd.cut(df['trestbps'], bins=5))['target'].mean()
+    # specify observed=False to retain current behavior and silence FutureWarning about Categorical groupby
+    # bp_disease = df.groupby(pd.cut(df['trestbps'], bins=5), observed=False)['target'].mean()
+    # print(bp_disease)
 
-    # # Cholesterol and heart disease
-    # chol_disease = df.groupby(pd.cut(df['chol'], bins=5))['target'].mean()
+    # specify observed=False to retain current behavior and silence FutureWarning about Categorical groupby
+    # chol_disease = df.groupby(pd.cut(df['chol'], bins=5), observed=False)['target'].mean()
+    # print(chol_disease)
 
     # # Fasting blood sugar and heart disease
     # fbs_disease = df.groupby('fbs')['target'].mean()
+    # print(fbs_disease)
 
     # 5. Cardiac Test Results
     # Resting ECG patterns
     # restecg_disease = df.groupby('restecg')['target'].mean().sort_values(ascending=False)
+    # print(restecg_disease)
 
     # # Max heart rate correlation
     # thalach_correlation = df[['thalach', 'target']].corr().iloc[0,1]
+    # print(thalach_correlation)
     # thalach_by_disease = df.groupby('target')['thalach'].describe()
+    # print(thalach_by_disease)
 
     # # Exercise-induced angina
     # exang_disease = df.groupby('exang')['target'].mean()
+    # print(exang_disease)
 
     # # ST-depression and disease
-    # oldpeak_disease = df.groupby(pd.cut(df['oldpeak'], bins=5))['target'].mean()
+    # oldpeak_disease = df.groupby(pd.cut(df['oldpeak'], bins=5), observed=False)['target'].mean()
+    # print(oldpeak_disease)
 
     # # ST segment slope
-    # slope_disease = df.groupby('slope')['target'].mean().sort_values(ascending=False)
-
+    slope_disease = df.groupby('slope')['target'].mean().sort_values(ascending=False)
+    print(slope_disease)
+    
     # 6. Blood Disorder Analysis
     # Major vessels and heart disease
     # ca_disease = df.groupby('ca')['target'].mean().sort_values(ascending=False)
