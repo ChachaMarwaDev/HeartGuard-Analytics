@@ -1,5 +1,5 @@
 from src.extract import extract_csv
-from src.transfrom import clean_data
+from src.transform import clean_data
 # from src.load import load_data
 
 def main():
