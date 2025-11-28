@@ -17,7 +17,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     
     # mapping; sex -> male,female , fbs -> true,false , exang -> Yes,No , slope -> Upsloping,flat,downsloping , target -> disease_present,normal
     # print('AFTER CLEANING')
-    df['sex'] = df['sex'].map({1 :'Male', 0:'Female'})
+    # df['sex'] = df['sex'].map({1 :'Male', 0:'Female'})
     df['fbs'] = df['fbs'].map({1 :'True', 0:'False'})
     df['slope'] = df['slope'].map({2: 'Downsloping', 1 :'Flat', 0:'Upsloping'})
     df['exang'] = df['exang'].map({1 :'Yes', 0:'No'})
@@ -125,34 +125,44 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # print(oldpeak_disease)
 
     # # ST segment slope
-    slope_disease = df.groupby('slope')['target'].mean().sort_values(ascending=False)
-    print(slope_disease)
+    # slope_disease = df.groupby('slope')['target'].mean().sort_values(ascending=False)
+    # print(slope_disease)
     
     # 6. Blood Disorder Analysis
     # Major vessels and heart disease
     # ca_disease = df.groupby('ca')['target'].mean().sort_values(ascending=False)
+    # print(ca_disease)
 
     # # Thalassemia classification
     # thal_disease = df.groupby('thal')['target'].mean().sort_values(ascending=False)
+    # print(thal_disease)
 
     # # Check for NULL thalassemia values
     # null_thal = df[df['thal'] == 0]
     # null_thal_count = len(null_thal)
+    # print(null_thal_count)
 
     # 7. Multivariate Analysis
     # Combination of risk factors
     # df['multiple_risk'] = ((df['chol'] > 240) & (df['trestbps'] > 140) & (df['fbs'] == 1)).astype(int)
     # multiple_risk_disease = df.groupby('multiple_risk')['target'].mean()
+    # print(multiple_risk_disease)
 
     # # Interaction between age, sex and chest pain
-    # age_sex_cp_disease = df.groupby(['age_group', 'sex', 'cp'])['target'].mean().reset_index()
+    # bins = [28, 39, 49, 59, 69, 200]  # 29-39, 40-49, 50-59, 60-69, 70+
+    # labels = ['29-39', '40-49', '50-59', '60-69', '70+']
+    # df['AgeGroup'] = pd.cut(df['age'], bins=bins, labels=labels, right=True, include_lowest=True, ordered=True)
+    # age_sex_cp_disease = df.groupby(['AgeGroup', 'sex', 'cp'])['target'].mean().reset_index()
+    # print(age_sex_cp_disease)
 
     # # Correlation matrix for key variables
     # correlation_matrix = df[['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'target']].corr()
+    # print(correlation_matrix)
 
     # 8. Feature Importance
     # Correlation with target variable
     # target_correlations = df.corr()['target'].sort_values(ascending=False).drop('target')
+    # print(target_correlations)
 
     # # Check for redundant features
     # feature_correlation = df.corr().abs()
@@ -179,6 +189,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
     # # Check for missing values
     # missing_values = df.isnull().sum()
+    # print(missing_values)
 
     # # Check medically plausible ranges
     # medically_implausible = {
@@ -186,6 +197,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     #     'chol': df[(df['chol'] < 100) | (df['chol'] > 600)],
     #     'thalach': df[(df['thalach'] < 60) | (df['thalach'] > 220)]
     # }
+    # print(medically_implausible)
 
     # 10. Comparative Analysis
     # Patients with vs without exercise-induced angina
@@ -196,6 +208,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     #     'thalach': 'mean',
     #     'target': 'mean'
     # })
+    # print(exang_comparison)
 
     # # Characteristic profiles by chest pain type
     # cp_profiles = df.groupby('cp').agg({
@@ -205,6 +218,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     #     'chol': 'mean',
     #     'target': 'mean'
     # })
+    # print(cp_profiles)
 
     # # Cardiac test results by disease status
     # disease_comparison = df.groupby('target').agg({
@@ -213,4 +227,5 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     #     'trestbps': ['mean', 'std'],
     #     'chol': ['mean', 'std']
     # })
+    # print(disease_comparison)
     return df
