@@ -17,7 +17,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     
     # mapping; sex -> male,female , fbs -> true,false , exang -> Yes,No , slope -> Upsloping,flat,downsloping , target -> disease_present,normal
     # print('AFTER CLEANING')
-    # df['sex'] = df['sex'].map({1: 'Male', 0: 'Female'})
+    df['sex'] = df['sex'].map({1: 'Male', 0: 'Female'})
     df['fbs'] = df['fbs'].map({1: 'True', 0: 'False'})
     df['slope'] = df['slope'].map({2: 'Downsloping', 1: 'Flat', 0: 'Upsloping'})
     df['exang'] = df['exang'].map({1: 'Yes', 0: 'No'})
@@ -165,20 +165,20 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # print(target_correlations)
 
     # Check for redundant features
-    feature_correlation = df.corr().abs()
+    # feature_correlation = df.corr().abs()
     
     # Identify highly correlated features (correlation > 0.8)
-    high_corr = []
-    for i in range(len(feature_correlation.columns)):
-        for j in range(i + 1, len(feature_correlation.columns)):
-            if feature_correlation.iloc[i, j] > 0.8:
-                high_corr.append(
-                    (feature_correlation.columns[i], 
-                     feature_correlation.columns[j], 
-                     feature_correlation.iloc[i, j])
-                )
+    # high_corr = []
+    # for i in range(len(feature_correlation.columns)):
+    #     for j in range(i + 1, len(feature_correlation.columns)):
+    #         if feature_correlation.iloc[i, j] > 0.8:
+    #             high_corr.append(
+    #                 (feature_correlation.columns[i], 
+    #                  feature_correlation.columns[j], 
+    #                  feature_correlation.iloc[i, j])
+    #             )
 
-    print(high_corr)
+    # print(high_corr)
 
     # 9. Outlier & Data Quality
     # Check for outliers using IQR method

@@ -1,6 +1,6 @@
 from src.extract import extract_csv
 from src.transform import clean_data
-# from src.load import load_data
+from src.load import load_data
 
 def main():
     try:
@@ -18,7 +18,7 @@ def main():
     # print("clean data exported")
     # Heart_disease_statlog.csv
 
-    # load_data(cleaned, "diabetes_cleaned.csv")
+    load_data(cleaned, "diabetes_cleaned.csv")
     return cleaned
 
 if __name__ == "__main__":
