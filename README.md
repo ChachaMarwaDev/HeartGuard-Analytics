@@ -1,4 +1,3 @@
-```markdown
 # ❤️ HeartGuard Analytics
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
@@ -334,3 +333,4 @@ jupyter>=1.0.0
 3. **`CONTRIBUTING.md`** (if you want detailed contribution guidelines)
 
 4. **`.github/ISSUE_TEMPLATE.md`** (for standardized issue reporting)
+
